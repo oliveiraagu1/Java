@@ -1,9 +1,7 @@
 package br.com.vittorelle.picPay.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -29,4 +27,10 @@ public class Transfer {
 
     @Column(name = "value")
     private BigDecimal value;
+
+    public Transfer(Wallet sender, Wallet receiver, BigDecimal value) {
+        this.sender = sender;
+        this.receiver = receiver;
+        this.value = value;
+    }
 }

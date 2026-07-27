@@ -15,6 +15,7 @@ public class WalletService {
     private final WalletTypeRepository walletTypeRepository;
 
     public Wallet createWallet(CreateWalletDto dto) {
+
         var existingWallet = walletRepository.findByCpfCnpjOrEmail(dto.cpfCnpj(), dto.email());
         if (existingWallet.isPresent()) {
             throw new WalletDataAlreadyExistsException("CpfCnpj or email already exists");

@@ -1,10 +1,7 @@
 package br.com.vittorelle.picPay.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.UUID;
 
@@ -14,6 +11,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Getter
 @Setter
+@EqualsAndHashCode
 public class WalletType {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -21,20 +19,14 @@ public class WalletType {
 
     private String description;
 
+    @Getter
+    @AllArgsConstructor
     public enum Enum {
 
         USER("user"),
         MERCHANT("merchant");
 
-        Enum(String description) {
-            this.description = description;
-        }
-
         private String description;
-
-        public String getDescription() {
-            return description;
-        }
 
         public WalletType get(){
             return new WalletType(null, description);

@@ -1,7 +1,7 @@
 package br.com.vittorelle.picPay.service;
 
 import br.com.vittorelle.picPay.client.AuthorizationClient;
-import br.com.vittorelle.picPay.entity.Transfer;
+import br.com.vittorelle.picPay.dto.TransferDto;
 import br.com.vittorelle.picPay.exception.PicPayException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ public class AuthorizationService {
 
     private final AuthorizationClient authorizationClient;
 
-    public Boolean isAuthorized(Transfer transfer) {
+    public Boolean isAuthorized(TransferDto transfer) {
         var response = authorizationClient.isAuthorized();
 
         if (response.getStatusCode().isError()) {
